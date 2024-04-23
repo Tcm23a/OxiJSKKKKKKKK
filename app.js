@@ -1,26 +1,32 @@
-alert('Boas vindas ao jogo do número secreto')
-let numero_de_soma = 1000;;
-let numeroSecreto = parseInt(Math.random() * numero_de_soma + 1);
-console.log(numeroSecreto)
-let chute;
-let tentativas = 1;
+//altere o conteúdo da tag h1 com document.querySelector e atribua o seguinte texto: Hora do Desafio.
 
-// enquanto chute não for igual ao n.s.
-while (chute != numeroSecreto) {
-    chute = prompt(`Escolha um número entre 1 a ${numero_de_soma}`);
-    // se chute for igual ao número secreto
-    if (chute == numeroSecreto) {
-       break;
-    } else {
-        if (chute > numeroSecreto) {
-            alert(`O número secreto é menor que ${chute}`)
-        } else {
-            alert(`O número secreto é maior que ${chute}`)
-        }
-        // tentativas = tentativas + 1
-        tentativas++
-    }
+let titulo = document.querySelector('h1');
+titulo.innerHTML = 'Hora do Desafio';
+
+//Crie uma função que exiba no console a mensagem O botão foi clicado sempre que o botão Console for pressionado.
+
+function botao_console(){
+    alert('Botão console foi pressionado!');
 }
 
-let palavraTentativa = tentativas > 1 ? 'tentativas' : 'tentativa'
-alert(`Isso ai! Você descobriu o número secreto ${numeroSecreto} com ${tentativas} ${palavraTentativa}`);
+//Crie uma função que exiba um alerta com a mensagem: Eu amo JS, sempre que o botão Alerta for pressionado.
+
+function botao_alerta(){
+    alert('Eu amo JavaScript');
+}
+//Crie uma função que é executada quando o botão prompt é clicado, perguntando o nome de uma cidade do Brasil. Em seguida, exiba um alerta com a mensagem concatenando a resposta com o texto: Estive em {cidade} e lembrei de você.
+
+function botao_prompt(){
+    let cidade_escolhida = prompt('Qual o nome da sua cidade ?');
+    alert(`Estive em ${cidade_escolhida}, e lembrei de você!`);
+}
+
+//Ao clicar no botão soma, peça 2 números e exiba o resultado da soma em um alerta.
+
+function botao_soma(){
+    let numero1 = parseInt(prompt('Digite o primeiro numero que deseja somar:  '));
+    let numero2 = parseInt(prompt('Digite o segundo numero que deseja somar:  '));
+    let resultado = numero1 + numero2;
+        alert(`A soma do numero ${numero1} mais o numero ${numero2}, é igual a ${resultado}`);
+}
+
