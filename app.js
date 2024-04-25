@@ -1,32 +1,32 @@
-//altere o conteúdo da tag h1 com document.querySelector e atribua o seguinte texto: Hora do Desafio.
+//Criar uma função que exibe "Olá, mundo!" no console.
 
-let titulo = document.querySelector('h1');
-titulo.innerHTML = 'Hora do Desafio';
+console.log('olá mundo');
 
-//Crie uma função que exiba no console a mensagem O botão foi clicado sempre que o botão Console for pressionado.
+//Criar uma função que recebe um nome como parâmetro e exibe "Olá, [nome]!" no console.
 
-function botao_console(){
-    alert('Botão console foi pressionado!');
+function recebeNome(){
+    let nome = prompt('Qual seu nome :  ');
+    console.log(`Olá, ${nome}`);
 }
+//recebeNome()
 
-//Crie uma função que exiba um alerta com a mensagem: Eu amo JS, sempre que o botão Alerta for pressionado.
+//Criar uma função que recebe um número como parâmetro e retorna o dobro desse número.
 
-function botao_alerta(){
-    alert('Eu amo JavaScript');
+function dobraNumero(){
+    let numeroEscolhido = parseInt(prompt('Escolha um numero para duplicar: '));
+    alert(numeroEscolhido * 2);
 }
-//Crie uma função que é executada quando o botão prompt é clicado, perguntando o nome de uma cidade do Brasil. Em seguida, exiba um alerta com a mensagem concatenando a resposta com o texto: Estive em {cidade} e lembrei de você.
+//dobraNumero()
 
-function botao_prompt(){
-    let cidade_escolhida = prompt('Qual o nome da sua cidade ?');
-    alert(`Estive em ${cidade_escolhida}, e lembrei de você!`);
+//Criar uma função que recebe três números como parâmetros e retorna a média deles.
+
+function mediaNumeros(){
+    let numero1, numero2, numero3 = parseInt(prompt('Qual foi sua primeira nota: '));,  parseInt(prompt('Qual foi sua segunda nota:')); parseInt(prompt('Qual foi sua terceira nota:'));
+    let media = (((numero1 += numero2) + numero3) /2 );
+    console.log(media)
 }
+mediaNumeros()
 
-//Ao clicar no botão soma, peça 2 números e exiba o resultado da soma em um alerta.
+//Criar uma função que recebe dois números como parâmetros e retorna o maior deles.
 
-function botao_soma(){
-    let numero1 = parseInt(prompt('Digite o primeiro numero que deseja somar:  '));
-    let numero2 = parseInt(prompt('Digite o segundo numero que deseja somar:  '));
-    let resultado = numero1 + numero2;
-        alert(`A soma do numero ${numero1} mais o numero ${numero2}, é igual a ${resultado}`);
-}
-
+//Criar uma função que recebe um número como parâmetro e retorna o resultado da multiplicação desse número por ele mesmo
