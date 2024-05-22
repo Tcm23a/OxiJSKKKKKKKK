@@ -1,32 +1,73 @@
-//altere o conteúdo da tag h1 com document.querySelector e atribua o seguinte texto: Hora do Desafio.
+let listaDeNumerosSorteados = [];
+let numeroLimite = 10;
+let numeroSecreto = gerarNumeroAleatorio();
+let tentativas = 1;
 
-let titulo = document.querySelector('h1');
-titulo.innerHTML = 'Hora do Desafio';
-
-//Crie uma função que exiba no console a mensagem O botão foi clicado sempre que o botão Console for pressionado.
-
-function botao_console(){
-    alert('Botão console foi pressionado!');
+function exibirTextoNaTela(tag, texto) {
+    let campo = document.querySelector(tag);
+    campo.innerHTML = texto;
+    responsiveVoice.speak(texto, 'Brazilian Portuguese Female', {rate:1.2});
 }
 
-//Crie uma função que exiba um alerta com a mensagem: Eu amo JS, sempre que o botão Alerta for pressionado.
-
-function botao_alerta(){
-    alert('Eu amo JavaScript');
-}
-//Crie uma função que é executada quando o botão prompt é clicado, perguntando o nome de uma cidade do Brasil. Em seguida, exiba um alerta com a mensagem concatenando a resposta com o texto: Estive em {cidade} e lembrei de você.
-
-function botao_prompt(){
-    let cidade_escolhida = prompt('Qual o nome da sua cidade ?');
-    alert(`Estive em ${cidade_escolhida}, e lembrei de você!`);
+function exibirMensagemInicial() {
+    exibirTextoNaTela('h1', 'Jogo do número secreto');
+    exibirTextoNaTela('p', 'Escolha um número entre 1 e 10');
 }
 
-//Ao clicar no botão soma, peça 2 números e exiba o resultado da soma em um alerta.
+exibirMensagemInicial();
 
-function botao_soma(){
-    let numero1 = parseInt(prompt('Digite o primeiro numero que deseja somar:  '));
-    let numero2 = parseInt(prompt('Digite o segundo numero que deseja somar:  '));
-    let resultado = numero1 + numero2;
-        alert(`A soma do numero ${numero1} mais o numero ${numero2}, é igual a ${resultado}`);
+function verificarChute() {
+    let chute = document.querySelector('input').value;
+    
+    if (chute == numeroSecreto) {
+        exibirTextoNaTela('h1', 'Acertou!');
+        let palavraTentativa = tentativas > 1 ? 'tentativas' : 'tentativa';
+        let mensagemTentativas = `Você descobriu o número secreto com ${tentativas} ${palavraTentativa}!`;
+        exibirTextoNaTela('p', mensagemTentativas);
+        document.getElementById('reiniciar').removeAttribute('disabled');
+    } else {
+        if (chute > numeroSecreto) {
+            exibirTextoNaTela('p', 'O número secreto é menor');
+        } else {
+            exibirTextoNaTela('p', 'O número secreto é maior');
+        }
+        tentativas++;
+        limparCampo();
+    }
 }
+
+function gerarNumeroAleatorio() {
+    let numeroEscolhido = parseInt(Math.random() * numeroLimite + 1);
+    let quantidadeDeElementosNaLista = listaDeNumerosSorteados.length;
+
+    if (quantidadeDeElementosNaLista == numeroLimite) {
+        listaDeNumerosSorteados = [];
+    }
+    if (listaDeNumerosSorteados.includes(numeroEscolhido)) {
+        return gerarNumeroAleatorio();
+    } else {
+        listaDeNumerosSorteados.push(numeroEscolhido);
+        console.log(listaDeNumerosSorteados)
+        return numeroEscolhido;
+    }
+}
+
+function limparCampo() {
+    chute = document.querySelector('input');
+    chute.value = '';
+}
+
+function reiniciarJogo() {
+    numeroSecreto = gerarNumeroAleatorio();
+    limparCampo();
+    tentativas = 1;
+    exibirMensagemInicial();
+    document.getElementById('reiniciar').setAttribute('disabled', true)
+}
+
+
+
+
+
+
 
